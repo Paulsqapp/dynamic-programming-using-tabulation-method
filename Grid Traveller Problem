@@ -1,0 +1,28 @@
+'''
+How many ways can you travel throu an n * m grid.
+Only down and to the right moves are allowed
+you have to sort them...[2,3] == [3,2]
+'''
+from itertools import permutations, product
+def grid_traveller(m,n):
+    cordinates = list(product(range(m+1),range(n+1)))
+    print(cordinates)
+    grid = {}
+    #grid[(0,0)] = 0
+    #grid[(1,1)] = 1
+    print('grid',grid)
+    for cord in cordinates:
+        print('----cord----', cord)
+        if 0 in cord: grid[cord] = 0
+        
+        elif cord == (1,1): grid[cord] = 1
+        else:
+            grid[cord] = grid[cord[0]-1, cord[1]] + grid[cord[0], cord[1]-1]
+    
+    print('---- grid ----', grid)    
+    return grid[m,n]
+        
+x = grid_traveller(3,3)
+''' larger problem
+x = grid_traveller(3,3)
+'''
