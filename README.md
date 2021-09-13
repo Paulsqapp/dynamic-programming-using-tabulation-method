@@ -1,5 +1,5 @@
 # dynamic-programing
-Dynamic Programing Using Tabulation Method
+Dynamic Programming Using Tabulation Method
 
 If you have challenges with recursive method of solving Dynamic Programming challanges, the tabulation method
 provides an easier alternative, and for Python Programming, Iterative methods are usually more efficient than 
