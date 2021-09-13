@@ -6,6 +6,6 @@ provides an easier alternative, and for Python Programming, Iterative methods ar
 recursive onces.
 
 There are three examples: - 
-  Rod Cutting Problem
-  Longest Subsequence Problem
-  Grid Traveller Problem
+  Rod Cutting Problem,
+  Longest Subsequence Problem,
+  Grid Traveller Problem.
