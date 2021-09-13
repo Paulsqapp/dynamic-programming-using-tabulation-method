@@ -1,0 +1,72 @@
+from itertools import zip_longest, combinations_with_replacement as cwr, product
+
+''' small problem for testing '''
+A = 'ABCBDABC'
+B = 'BDC'
+
+''' 
+Larger problem 
+A = 'DACCGGTCGAGTGCGCGGAAGCCGGCCGAA'
+B = 'GTCGTTCGGAATGCCGTTGCTCTGTAAA'
+'''
+
+def LCS(a,b):
+    '''
+    returns an integer representing the longest subsequence
+    '''
+    x = list(range(len(a) +1))
+    y = list(range(len(b) +1))
+    table = {x:0 for x in product(x,y)}
+    
+    
+    #counter = 0 
+    for i,x in enumerate(a,  start=1):
+        for j,y in enumerate(b, start=1):
+            print('start for loop',i,j, )
+            if i != 0 and j != 0:
+                print('001', f'i == {i}, j = {j}, x == {x}, y = {y} ') 
+                if x == y:
+                    table[(i,j)] = table[(i-1,j-1)] + 1
+                    print('matching==', table[(i,j)], f'x == {x}, y = {y} \n', table)
+                    #counter += 1
+                elif table[(i-1, j)] >= table[(i, j-1)]:
+                    table[i,j] = table[i-1,j]
+                else:
+                    table[i,j] = table[i,j-1]
+            
+    
+    #print(table[(len(a), len(b))],)
+    print(table)
+    return table[(len(a), len(b))]
+    
+x = LCS(A,B)
+
+def LCS_extended(a,b):
+    '''
+    returns an integer representing the longest subsequence
+    '''
+    x = list(range(len(a) +1))
+    y = list(range(len(b) +1))
+    table = {x:[] for x in product(x,y)}
+    
+    #counter = 0 
+    for i,x in enumerate(a,  start=1):
+        for j,y in enumerate(b, start=1):
+            print('start for loop',i,j, )
+            if i != [] and j != []:
+                print('001', f'i == {i}, j = {j}, x == {x}, y = {y} ') 
+                if x == y:
+                    table[(i,j)] = table[(i-1,j-1)] + [y]
+                    print('matching==', table[(i,j)], f'x == {x}, y = {y} \n', table)
+                    #counter += 1
+                elif table[(i-1, j)] >= table[(i, j-1)]:
+                    table[i,j] = table[i-1,j]
+                else:
+                    table[i,j] = table[i,j-1]
+            
+    
+    #print(table[(len(a), len(b))],)
+    print(table)
+    return ''.join(table[(len(a), len(b))])
+    
+y = LCS_extended(A,B)
